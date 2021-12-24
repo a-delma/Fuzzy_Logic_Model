@@ -1,0 +1,54 @@
+************************** README **************************
+Name: Andrew DelMastro
+Date: 12/23/2021
+Cour: BME 143
+******************* Project Description ********************
+
+A python script for creating fuzzy boolan logic models for cell signalling
+pathways. Based on the paper Logical modelling of Drosophila signalling pathways
+by Mbodj et al. https://doi.org/10.1039/C3MB70187E
+
+usage: main_script.py [-h] [-i I] [-o O] [-m M] [-graph GRAPH]
+
+Main script to run the simulations
+
+optional arguments:
+  -h, --help    show this help message and exit
+  -i I          input file
+  -o O          output dir
+  -m M          model file
+  -graph GRAPH  out a graph
+
+Running the file:
+By default, main_script.py can be called with python and it will generate a
+    sample run with the EGF pathway, and a sample input of no ligand bindings.
+    However, can be run with a custom .mod and input file with the -m and -i
+    flags. The output can be specified with the -o flag. Lastly, the -graph
+    flag is used to tell the model to produce a graph at each step. If given,
+    the images will be saved as PNG files to the /img/ directory.
+
+Files:
+    README: this file
+    main_script.py: the main script for the model. By default, creates the EGF
+        model, with a simple input and iterates till the final state
+    Model.py: the file containing the model module
+    Node.py:  the file containing the node module
+    fuzzy_logic.py: the file for creating infix fuzzy boolean logic
+    generate_models_layouts.py: a script to generate all the graphs for the core
+        pathways laid out in the paper
+    check_outputs: a script to compare the output of our model with the stated
+        output from the paper
+
+Dependecies:
+    networkx: is used to create all of the graph images
+
+Input:
+    .mod file:
+        line by line logic for each of the interactions
+        lines take the form "signal state logic" for dependent nodes, and 
+        "signal - input" for inputs to the model
+
+    input files:
+        a comma separated list of the signals that start active, by default,
+        the assumed state is 1, but an additional '(2)' can be included to
+        make the state terinary. 
